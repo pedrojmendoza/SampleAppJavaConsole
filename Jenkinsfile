@@ -22,5 +22,10 @@ pipeline {
             }
         }
     }
+    stage('Run') {
+        steps {
+            sh 'java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
+        }
+    }
   }
 }
