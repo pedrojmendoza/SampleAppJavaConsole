@@ -9,8 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'cd my-app'
-        sh 'mvn -B -DskipTests clean package'
+        sh 'mvn -B -DskipTests -f ./my-app/pom.xml clean package'
       }
     }
   }
