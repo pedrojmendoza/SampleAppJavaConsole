@@ -23,6 +23,7 @@ pipeline {
     }
     stage('Help') {
         steps {
+            sh 'ls -la /root/.m2'
             sh 'mvn help:effective-settings'
         }
     }
