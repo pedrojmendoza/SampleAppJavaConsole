@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Deploy') {
         steps {
-            sh 'mvn deploy:deploy-file -DgroupId=com.mycompany.app -DartifactId=App -Dversion=1.0.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://ec2-54-197-45-165.compute-1.amazonaws.com:8081/repository/maven-snapshots -Dfile=./my-app/target/my-app-1.0-SNAPSHOT.jar'
+            sh 'mvn -X deploy:deploy-file -DgroupId=com.mycompany.app -DartifactId=App -Dversion=1.0.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://ec2-54-197-45-165.compute-1.amazonaws.com:8081/repository/maven-snapshots -Dfile=./my-app/target/my-app-1.0-SNAPSHOT.jar'
         }
     }
     stage('Run') {
