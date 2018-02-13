@@ -2,8 +2,7 @@ pipeline {
   agent {
     docker {
       image 'maven:3-alpine'
-      args '-v /root/.m2:/root/.m2:z -u root'
-      reuseNode true
+      args '-v /root/.m2:/root/.m2'
     }
   }
   stages {
@@ -20,6 +19,11 @@ pipeline {
             always {
                 junit 'my-app/target/surefire-reports/*.xml'
             }
+        }
+    }
+    stage('Help') {
+        steps {
+            sh 'mvn help:effective-settings'
         }
     }
     stage('Deploy') {
