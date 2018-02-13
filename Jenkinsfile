@@ -3,8 +3,8 @@ pipeline {
     docker {
       image 'maven:3-alpine'
       args '-v /root/.m2:/root/.m2 -u root'
+      reuseNode true
     }
-
   }
   stages {
     stage('Build') {
