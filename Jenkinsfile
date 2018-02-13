@@ -2,7 +2,8 @@ pipeline {
   agent {
     docker {
       image 'maven:3-alpine'
-      args '-v /root/.m2:/root/.m2'
+      args '-v /root/.m2:/root/.m2:z -u root'
+      reuseNode true
     }
   }
   stages {
@@ -24,7 +25,7 @@ pipeline {
     stage('Help') {
         steps {
             sh 'ls -la /root/.m2'
-            sh 'less /root/.m2/settings-docker.xml'
+            sh 'less /root/.m2/settings.xml'
             sh 'mvn help:effective-settings'
         }
     }
