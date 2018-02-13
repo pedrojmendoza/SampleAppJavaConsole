@@ -24,6 +24,7 @@ pipeline {
     stage('Help') {
         steps {
             sh 'ls -la /root/.m2'
+            sh 'less /root/.m2/settings-docker.xml'
             sh 'mvn help:effective-settings'
         }
     }
