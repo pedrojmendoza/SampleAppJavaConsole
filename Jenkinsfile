@@ -22,6 +22,11 @@ pipeline {
             }
         }
     }
+    stage('Deploy') {
+        steps {
+            sh 'mvn deploy:deploy-file -DgroupId=com.mycompany.app -DartifactId=App -Dversion=1.0.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://localhost:8081/repository/maven-snapshots -Dfile=./my-app/target/my-app-1.0-SNAPSHOT.jar'
+        }
+    }
     stage('Run') {
         steps {
             sh 'java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
